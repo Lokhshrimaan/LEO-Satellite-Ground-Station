@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MATLAB
+*.asv
+*.m~
+
+# Ansys / HFSS generated files
+*.aedt.lock
+*.autosave/
+*.log
+
+# GNU Radio / generated Python files
+*.pyc
+
+# Windows / macOS files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+
+# Large RF recordings
+*.wav
+*.iq
+*.raw
+
+# Generated results
+results/generated/
