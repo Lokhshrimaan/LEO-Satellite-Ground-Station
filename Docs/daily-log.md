@@ -497,3 +497,67 @@ No RF hardware was required during Day 1.
 The next stage will introduce receiver noise, bandwidth, noise figure,
 SNR, and link margin before developing the digital communication chain
 in GNU Radio.
+
+## Step 8 — Real Satellite Orbit and Pass Modeling
+
+### Work Completed
+
+Implemented a realistic LEO satellite pass model using the ISS
+(NORAD 25544) as the test satellite.
+
+Instead of assuming a fixed satellite altitude or artificial trajectory,
+a real TLE was loaded from:
+
+`Data/ISS_25544.tle`
+
+The satellite orbit was propagated using SGP4 through the Skyfield
+Python library.
+
+An approximate ground station was defined at:
+
+- Latitude: 9.45° N
+- Longitude: 77.566667° E
+
+A 10° minimum elevation mask was applied.
+
+### Results
+
+The next usable ISS passes were successfully identified.
+
+For the selected pass:
+
+- Pass duration: 385.5 s
+- Maximum elevation: 46.36°
+- Minimum slant range: 559.91 km
+- Maximum Doppler: +3193.98 Hz
+- Minimum Doppler: −3196.67 Hz
+- Received frequency range: 145.796803–145.803194 MHz
+
+### Validation
+
+The elevation profile followed the expected rise–maximum–fall pattern.
+
+The slant range decreased toward closest approach and increased
+afterwards.
+
+The range rate transitioned from negative to positive, corresponding
+to the satellite changing from approaching to receding.
+
+The Doppler shift showed the expected opposite-sign relationship with
+range rate.
+
+The small non-zero range rate at the numerically sampled minimum range
+was attributed to discrete time sampling rather than a physical-model
+error.
+
+### Engineering Understanding Gained
+
+This step demonstrated how an actual satellite orbital state can be
+converted into a time-varying communication geometry.
+
+The model now provides the physical inputs required for realistic
+satellite link-budget and Doppler analysis.
+
+### Status
+
+Step 8 COMPLETE.
